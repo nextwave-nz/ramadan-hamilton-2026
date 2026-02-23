@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ramadan-hamilton-2026-v8';
+const CACHE_NAME = 'ramadan-hamilton-2026-v9';
 const urlsToCache = [
     './',
     './index.html',
@@ -12,19 +12,31 @@ self.addEventListener('install', (event) => {
     self.skipWaiting();
 });
 
+// Network-first strategy: always try fresh content, fall back to cache
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request).then((response) => response || fetch(event.request))
+        fetch(event.request)
+            .then((response) => {
+                // Clone and cache the fresh response
+                const clone = response.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, clone);
+                });
+                return response;
+            })
+            .catch(() => {
+                // Offline fallback to cache
+                return caches.match(event.request);
+            })
     );
 });
 
 self.addEventListener('activate', (event) => {
-    const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                    if (cacheName !== CACHE_NAME) {
                         return caches.delete(cacheName);
                     }
                 })
