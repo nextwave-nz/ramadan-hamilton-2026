@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ramadan-hamilton-2026-v1';
+const CACHE_NAME = 'ramadan-hamilton-2026-v2';
 const urlsToCache = [
 './',
 './index.html',
