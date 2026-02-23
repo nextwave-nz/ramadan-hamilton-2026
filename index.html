@@ -750,7 +750,7 @@
 </head>
 <body>
     <div class="install-banner" id="installBanner" onclick="installApp()">
-        📱 Install as app for offline access and notifications!
+        📱 Install as app for offline access!
     </div>
 
     <div class="container">
@@ -846,8 +846,8 @@
         <div class="notes">
             <h4>📌 Important Info</h4>
             <ul>
-                <li><strong>All times are Iqama (congregation)</strong></li>
-                <li><strong>Iftar</strong> = Break fast (Sunset + 3 min)</li>
+                <li><strong>All prayer times are Iqama (congregation)</strong></li>
+                <li><strong>Iftar times from FIANZ calendar</strong></li>
                 <li><strong>Suhoor</strong> = Stop eating time</li>
                 <li>Iqama times carry forward until next change</li>
                 <li>Taraweeh follows Isha nightly</li>
@@ -909,37 +909,37 @@
             }
         }
 
-        // Prayer times data
+        // Prayer times data - CORRECTED IFTAR TIMES FROM FIANZ
         const prayerTimes = [
-            {day: 1, date: "Feb 20", weekday: "Fri", suhoor: "5:14", fajr: "5:40", sunrise: "6:53", dhuhr: "1:50", asr: "5:40", maghrib: "8:40", iftar: "8:15", isha: "9:40"},
-            {day: 2, date: "Feb 21", weekday: "Sat", suhoor: "5:15", fajr: "5:50", sunrise: "6:55", dhuhr: "1:50", asr: "5:40", maghrib: "8:40", iftar: "8:13", isha: "9:40"},
-            {day: 3, date: "Feb 22", weekday: "Sun", suhoor: "5:17", fajr: "5:50", sunrise: "6:56", dhuhr: "1:50", asr: "5:40", maghrib: "8:35", iftar: "8:12", isha: "9:40"},
-            {day: 4, date: "Feb 23", weekday: "Mon", suhoor: "5:18", fajr: "5:50", sunrise: "6:57", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:11", isha: "9:40"},
-            {day: 5, date: "Feb 24", weekday: "Tue", suhoor: "5:20", fajr: "5:50", sunrise: "6:58", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:09", isha: "9:40"},
-            {day: 6, date: "Feb 25", weekday: "Wed", suhoor: "5:21", fajr: "5:50", sunrise: "6:59", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:08", isha: "9:40"},
-            {day: 7, date: "Feb 26", weekday: "Thu", suhoor: "5:22", fajr: "5:50", sunrise: "7:00", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:07", isha: "9:40"},
-            {day: 8, date: "Feb 27", weekday: "Fri", suhoor: "5:24", fajr: "5:50", sunrise: "7:01", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:05", isha: "9:30"},
-            {day: 9, date: "Feb 28", weekday: "Sat", suhoor: "5:25", fajr: "5:30", sunrise: "7:02", dhuhr: "1:50", asr: "5:40", maghrib: "8:30", iftar: "8:04", isha: "9:55"},
-            {day: 10, date: "Mar 1", weekday: "Sun", suhoor: "5:26", fajr: "5:50", sunrise: "7:03", dhuhr: "1:50", asr: "5:20", maghrib: "8:15", iftar: "8:02", isha: "9:30"},
-            {day: 11, date: "Mar 2", weekday: "Mon", suhoor: "5:28", fajr: "6:00", sunrise: "7:04", dhuhr: "1:50", asr: "5:20", maghrib: "8:15", iftar: "8:01", isha: "9:30"},
-            {day: 12, date: "Mar 3", weekday: "Tue", suhoor: "5:29", fajr: "6:00", sunrise: "7:05", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "8:00", isha: "9:30"},
-            {day: 13, date: "Mar 4", weekday: "Wed", suhoor: "5:30", fajr: "6:00", sunrise: "7:06", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "7:58", isha: "9:30"},
-            {day: 14, date: "Mar 5", weekday: "Thu", suhoor: "5:31", fajr: "6:00", sunrise: "7:07", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "7:57", isha: "9:20"},
-            {day: 15, date: "Mar 6", weekday: "Fri", suhoor: "5:33", fajr: "6:00", sunrise: "7:08", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:55", isha: "9:20"},
-            {day: 16, date: "Mar 7", weekday: "Sat", suhoor: "5:34", fajr: "6:00", sunrise: "7:09", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:54", isha: "9:20"},
-            {day: 17, date: "Mar 8", weekday: "Sun", suhoor: "5:35", fajr: "6:00", sunrise: "7:10", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:52", isha: "9:20"},
-            {day: 18, date: "Mar 9", weekday: "Mon", suhoor: "5:36", fajr: "6:10", sunrise: "7:11", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:51", isha: "9:20"},
-            {day: 19, date: "Mar 10", weekday: "Tue", suhoor: "5:37", fajr: "6:10", sunrise: "7:12", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:49", isha: "9:20"},
-            {day: 20, date: "Mar 11", weekday: "Wed", suhoor: "5:38", fajr: "6:10", sunrise: "7:13", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:48", isha: "9:10"},
-            {day: 21, date: "Mar 12", weekday: "Thu", suhoor: "5:40", fajr: "6:10", sunrise: "7:14", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:46", isha: "9:10"},
-            {day: 22, date: "Mar 13", weekday: "Fri", suhoor: "5:41", fajr: "6:10", sunrise: "7:15", dhuhr: "1:50", asr: "5:10", maghrib: "7:55", iftar: "7:45", isha: "9:10"},
-            {day: 23, date: "Mar 14", weekday: "Sat", suhoor: "5:42", fajr: "6:10", sunrise: "7:16", dhuhr: "1:50", asr: "5:10", maghrib: "7:55", iftar: "7:43", isha: "9:10"},
-            {day: 24, date: "Mar 15", weekday: "Sun", suhoor: "5:43", fajr: "6:10", sunrise: "7:17", dhuhr: "1:50", asr: "5:10", maghrib: "7:35", iftar: "7:42", isha: "9:10"},
-            {day: 25, date: "Mar 16", weekday: "Mon", suhoor: "5:44", fajr: "6:10", sunrise: "7:18", dhuhr: "1:50", asr: "5:10", maghrib: "7:50", iftar: "7:41", isha: "9:10"},
-            {day: 26, date: "Mar 17", weekday: "Tue", suhoor: "5:45", fajr: "6:10", sunrise: "7:18", dhuhr: "1:50", asr: "5:10", maghrib: "7:50", iftar: "7:39", isha: "9:00"},
-            {day: 27, date: "Mar 18", weekday: "Wed", suhoor: "5:46", fajr: "6:20", sunrise: "7:19", dhuhr: "1:50", asr: "5:10", maghrib: "7:30", iftar: "7:38", isha: "9:00"},
-            {day: 28, date: "Mar 19", weekday: "Thu", suhoor: "5:47", fajr: "6:20", sunrise: "7:20", dhuhr: "1:50", asr: "5:10", maghrib: "7:30", iftar: "7:36", isha: "9:00"},
-            {day: 29, date: "Mar 20", weekday: "Fri", suhoor: "5:48", fajr: "6:20", sunrise: "7:21", dhuhr: "1:50", asr: "5:10", maghrib: "7:45", iftar: "7:34", isha: "9:00"},
+            {day: 1, date: "Feb 20", weekday: "Fri", suhoor: "5:14", fajr: "5:40", sunrise: "6:53", dhuhr: "1:50", asr: "5:40", maghrib: "8:40", iftar: "8:17", isha: "9:40"},
+            {day: 2, date: "Feb 21", weekday: "Sat", suhoor: "5:15", fajr: "5:50", sunrise: "6:55", dhuhr: "1:50", asr: "5:40", maghrib: "8:40", iftar: "8:15", isha: "9:40"},
+            {day: 3, date: "Feb 22", weekday: "Sun", suhoor: "5:17", fajr: "5:50", sunrise: "6:56", dhuhr: "1:50", asr: "5:40", maghrib: "8:35", iftar: "8:14", isha: "9:40"},
+            {day: 4, date: "Feb 23", weekday: "Mon", suhoor: "5:18", fajr: "5:50", sunrise: "6:57", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:13", isha: "9:40"},
+            {day: 5, date: "Feb 24", weekday: "Tue", suhoor: "5:20", fajr: "5:50", sunrise: "6:58", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:11", isha: "9:40"},
+            {day: 6, date: "Feb 25", weekday: "Wed", suhoor: "5:21", fajr: "5:50", sunrise: "6:59", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:10", isha: "9:40"},
+            {day: 7, date: "Feb 26", weekday: "Thu", suhoor: "5:22", fajr: "5:50", sunrise: "7:00", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:09", isha: "9:40"},
+            {day: 8, date: "Feb 27", weekday: "Fri", suhoor: "5:24", fajr: "5:50", sunrise: "7:01", dhuhr: "1:50", asr: "5:40", maghrib: "8:20", iftar: "8:07", isha: "9:30"},
+            {day: 9, date: "Feb 28", weekday: "Sat", suhoor: "5:25", fajr: "5:30", sunrise: "7:02", dhuhr: "1:50", asr: "5:40", maghrib: "8:30", iftar: "8:06", isha: "9:55"},
+            {day: 10, date: "Mar 1", weekday: "Sun", suhoor: "5:26", fajr: "5:50", sunrise: "7:03", dhuhr: "1:50", asr: "5:20", maghrib: "8:15", iftar: "8:04", isha: "9:30"},
+            {day: 11, date: "Mar 2", weekday: "Mon", suhoor: "5:28", fajr: "6:00", sunrise: "7:04", dhuhr: "1:50", asr: "5:20", maghrib: "8:15", iftar: "8:03", isha: "9:30"},
+            {day: 12, date: "Mar 3", weekday: "Tue", suhoor: "5:29", fajr: "6:00", sunrise: "7:05", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "8:02", isha: "9:30"},
+            {day: 13, date: "Mar 4", weekday: "Wed", suhoor: "5:30", fajr: "6:00", sunrise: "7:06", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "8:00", isha: "9:30"},
+            {day: 14, date: "Mar 5", weekday: "Thu", suhoor: "5:31", fajr: "6:00", sunrise: "7:07", dhuhr: "1:50", asr: "5:20", maghrib: "8:10", iftar: "7:59", isha: "9:20"},
+            {day: 15, date: "Mar 6", weekday: "Fri", suhoor: "5:33", fajr: "6:00", sunrise: "7:08", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:57", isha: "9:20"},
+            {day: 16, date: "Mar 7", weekday: "Sat", suhoor: "5:34", fajr: "6:00", sunrise: "7:09", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:56", isha: "9:20"},
+            {day: 17, date: "Mar 8", weekday: "Sun", suhoor: "5:35", fajr: "6:00", sunrise: "7:10", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:54", isha: "9:20"},
+            {day: 18, date: "Mar 9", weekday: "Mon", suhoor: "5:36", fajr: "6:10", sunrise: "7:11", dhuhr: "1:50", asr: "5:20", maghrib: "8:05", iftar: "7:53", isha: "9:20"},
+            {day: 19, date: "Mar 10", weekday: "Tue", suhoor: "5:37", fajr: "6:10", sunrise: "7:12", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:51", isha: "9:20"},
+            {day: 20, date: "Mar 11", weekday: "Wed", suhoor: "5:38", fajr: "6:10", sunrise: "7:13", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:50", isha: "9:10"},
+            {day: 21, date: "Mar 12", weekday: "Thu", suhoor: "5:40", fajr: "6:10", sunrise: "7:14", dhuhr: "1:50", asr: "5:20", maghrib: "8:00", iftar: "7:48", isha: "9:10"},
+            {day: 22, date: "Mar 13", weekday: "Fri", suhoor: "5:41", fajr: "6:10", sunrise: "7:15", dhuhr: "1:50", asr: "5:10", maghrib: "7:55", iftar: "7:47", isha: "9:10"},
+            {day: 23, date: "Mar 14", weekday: "Sat", suhoor: "5:42", fajr: "6:10", sunrise: "7:16", dhuhr: "1:50", asr: "5:10", maghrib: "7:55", iftar: "7:45", isha: "9:10"},
+            {day: 24, date: "Mar 15", weekday: "Sun", suhoor: "5:43", fajr: "6:10", sunrise: "7:17", dhuhr: "1:50", asr: "5:10", maghrib: "7:35", iftar: "7:44", isha: "9:10"},
+            {day: 25, date: "Mar 16", weekday: "Mon", suhoor: "5:44", fajr: "6:10", sunrise: "7:18", dhuhr: "1:50", asr: "5:10", maghrib: "7:50", iftar: "7:43", isha: "9:10"},
+            {day: 26, date: "Mar 17", weekday: "Tue", suhoor: "5:45", fajr: "6:10", sunrise: "7:18", dhuhr: "1:50", asr: "5:10", maghrib: "7:50", iftar: "7:41", isha: "9:00"},
+            {day: 27, date: "Mar 18", weekday: "Wed", suhoor: "5:46", fajr: "6:20", sunrise: "7:19", dhuhr: "1:50", asr: "5:10", maghrib: "7:30", iftar: "7:40", isha: "9:00"},
+            {day: 28, date: "Mar 19", weekday: "Thu", suhoor: "5:47", fajr: "6:20", sunrise: "7:20", dhuhr: "1:50", asr: "5:10", maghrib: "7:30", iftar: "7:38", isha: "9:00"},
+            {day: 29, date: "Mar 20", weekday: "Fri", suhoor: "5:48", fajr: "6:20", sunrise: "7:21", dhuhr: "1:50", asr: "5:10", maghrib: "7:45", iftar: "7:36", isha: "9:00"},
             {day: 30, date: "Mar 21", weekday: "Sat", suhoor: "5:49", fajr: "6:20", sunrise: "7:22", dhuhr: "1:50", asr: "5:00", maghrib: "7:25", iftar: "7:33", isha: "8:50"}
         ];
 
@@ -1189,10 +1189,10 @@
                     
                     document.getElementById('iftarCountdown').textContent = 
                         `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                    document.getElementById('iftarTime').textContent = `At ${todayPrayers.iftar}`;
+                    document.getElementById('iftarTime').textContent = `Iftar at ${todayPrayers.iftar}`;
                 } else {
                     document.getElementById('iftarCountdown').textContent = '✅';
-                    document.getElementById('iftarTime').textContent = 'Done';
+                    document.getElementById('iftarTime').textContent = 'Completed';
                 }
             }
         }
@@ -1212,14 +1212,8 @@
         updateCountdowns();
         setInterval(updateCountdowns, 1000);
 
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const today = document.querySelector('.day-card.today');
-                if (today) {
-                    today.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 500);
-        });
+        // DO NOT auto-scroll on load - stay at top
+        // User requested to start at top of page
     </script>
 
 </body></html>
